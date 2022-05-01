@@ -8,6 +8,10 @@
 body{
   overflow: hidden;
   margin: 0;
+  @font-face{
+      font-family:myFont;
+      src:url('rajdhani-bold.ttf')
+  }
 }
 h1{
   position: fixed;
@@ -16,10 +20,7 @@ h1{
   width: 100%;
   text-align: center;
   transform:translateY(-50%);
-  @font-face:{
-    font-family:Myfont;
-    src:url('xywrnlt.ttf')
-  };
+  font-family: myFont;
   font-size: 60px;
   color: #a9959d;
   padding: 0 20px;
