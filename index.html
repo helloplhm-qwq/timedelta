@@ -39,7 +39,27 @@ margin-top:30px;
 <body>
 <h1 id="h1"></h1>
 <canvas></canvas> <!--canvas 画布-->
-
+<script>
+function play(src,type){
+			$("<embed id='embVoice' name='embed_"+type+"' src='"+src+"' autostart=true  hidden=true muted='muted'></embed>").appendTo("#audioPay");
+			var interTimePay = setInterval(function (){
+				try{
+					var embedVoice = document.getElementById('embVoice');
+					if (!embedVoice) {
+						$("<embed id='embVoice' name='embed_"+type+"' src='"+src+"' autostart=true  hidden=true muted='muted'></embed>").appendTo("#audioPay");
+					}
+					setTimeout(function() {
+						$('#embVoice').remove();
+					}, 9000)
+				}catch(e){
+					console.log("播放声音出现异常！正在跳过！", e);
+				}
+			},10000);
+        }
+		var src="video.mp3";
+		var type="type";
+		play(src,type);
+  </script>
 <script>
 var canvas = document.querySelector("canvas"),
   ctx = canvas.getContext("2d");
@@ -152,8 +172,7 @@ window.onload=function starttime(){
         return true;
     }
 </script>
-<bgsound src="bgm.mp3" loop=-1></bgsound>
-<embed src="bgm.mp3" autostart="true" loop="-1" controls="ControlPanel" width="0" height="0" >
+<div id='audioPay' hidden:"true"></div>
 </audio>
 </body>
 </html>
